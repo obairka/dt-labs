@@ -14,7 +14,8 @@
 
 (defn integrate
 	[f dx]
-	(let [f_memo (memoize f) calc_step_memo (memoize calc_step)]
+	(let [f_memo (memoize f) 
+		  calc_step_memo (memoize calc_step)]
 		(fn [x]
 			(let [sign (if (neg? x) -1 1)
 				  dx (* sign dx)
