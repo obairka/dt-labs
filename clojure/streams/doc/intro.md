@@ -1,3 +1,3 @@
-# Introduction to integrator-stream
+# Introduction to streams
 
 TODO: write [great documentation](http://jacobian.org/writing/what-to-write/)
