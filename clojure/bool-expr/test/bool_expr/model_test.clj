@@ -33,9 +33,3 @@
   (testing "not-same-variables?-test."
     (not (same-variables? (variable :x) (variable :x)))
     ))
-
-(deftest atom?-test
-  (testing "atom?-test."
-    (is atom? (variable :x))
-    (is atom? (constant true))
-    ))

@@ -38,12 +38,6 @@
 
 ; Helper functions
 
-(defn atom? [expr]
-  "Check if expr is an atom, i.e. a variable or constant."
-  (or
-    (variable? expr)
-    (constant? expr)))
-
 (defn expression? [expr]
   "Check if expr is a valid expression."
   (and (seq? expr) (not (empty? expr)) (keyword? (first expr))))

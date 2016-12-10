@@ -36,3 +36,22 @@
 			normalize (partial normalize-assoc disjunction?)]
 		(cons ::conj (fold (normalize args)))))
 
+;binary operator
+;distributive
+
+(defn negation? [expr]
+  "Check if expr represents negation of some expression."
+  {:pre [(expression? expr)]}
+  (and
+    (= ::neg (first expr))
+    (expression? (second expr))))
+
+(defn negation [expr]
+  "Create negation of expression."
+  {:pre [(expression? expr)]}
+  (if (negation? expr)
+    (args expr) ; todo:
+    (list ::neg expr)))
+
+(defn implication [a, b]
+	)

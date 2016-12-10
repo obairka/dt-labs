@@ -15,6 +15,14 @@
     (is (float-eq 17 (f 17)))
     (is (float-eq 19 (f 19)))))
 
+(let [f (integrate (fn [x] (* 2 x)) 0.1)]
+  (deftest simple-integration
+    (is (function? f))
+    (is (float-eq 1 (f 1)))
+    (is (float-eq 4 (f 2)))
+    (is (float-eq 9 (f 3)))
+    (is (float-eq 16 (f 4)))
+    ))
 
 (let [f (integrate (fn [x] (+ x (Math/sin x))) 0.1)]
   (deftest even-function-integration-test
