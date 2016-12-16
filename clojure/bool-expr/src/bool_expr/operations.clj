@@ -1,4 +1,4 @@
-(ns bool-expr.operations
+e(ns bool-expr.operations
   (:gen-class)
   (:require [bool-expr.model :refer :all]
   			[bool-expr.helpers :refer :all]))
