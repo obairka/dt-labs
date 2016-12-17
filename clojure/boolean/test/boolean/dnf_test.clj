@@ -59,4 +59,31 @@
 		(is (= expected (transform-to-dnf expr)))
 		(is (dnf? (transform-to-dnf expr) )) ))
 
+(deftest solve-test
+	(let [
+			x (variable :x)
+			y (variable :y)	
+			z
+			 (variable :z)	
+			expr (conjunction (disjunction x y) (conjunction y z))
+			expr-dnf (dnf expr)
+			solved-by-x (assign-value :x false expr-dnf)
+			solved-by-y (assign-value :y true solved-by-x)
+			solved-by-z (assign-value :z true solved-by-y)
+		]
+		(is (= (constant true) (collapse solved-by-z) ))))
+
+
+(deftest solve-test-2
+	(let [
+			x (variable :x)
+			y (variable :y)	
+			z (variable :z)	
+			expr (conjunction (disjunction x y) (disjunction y z))
+			expr-dnf (dnf expr)
+			name-values {:x false, :y false, :z true}
+			solved (assign-values name-values expr-dnf)
+		]
+		(is (= (constant false) (collapse solved) ))))
+
 
