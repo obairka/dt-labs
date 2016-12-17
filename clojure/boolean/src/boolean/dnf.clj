@@ -32,7 +32,9 @@
 			(map transform (rest expr)))))
 
 ; (not (not E))
+
 (defmethod transform :neg [expr]
+	
 	(transform (second (second expr))))
 
 ; (not (& e1 e2))
@@ -93,7 +95,12 @@
 	expr)
 
 (defmethod collapse :neg [expr]
-	(negation? (collapse (rest expr))))
+	(let [ 
+			arg (collapse (nth expr 1))
+		]
+		(if (constant? arg)
+			(constant (not (constant-value arg)))
+			(negation arg))))
 
 (defmethod collapse :conj [expr]
 	(let [

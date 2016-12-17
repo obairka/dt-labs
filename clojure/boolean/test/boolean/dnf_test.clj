@@ -86,4 +86,24 @@
 		]
 		(is (= (constant false) (collapse solved) ))))
 
+(deftest solve-test-3
+	(let [
+			x (variable :x)
+			y (variable :y)	
+			expr (implication x y)
+			expr-dnf (dnf expr)
+			name-values-00 {:x false, :y false}
+			name-values-01 {:x false, :y true}
+			name-values-10 {:x true, :y false}
+			name-values-11 {:x true, :y true}
+			expr-00 (assign-values name-values-00 expr-dnf)
+			expr-01 (assign-values name-values-01 expr-dnf)
+			expr-10 (assign-values name-values-10 expr-dnf)
+			expr-11 (assign-values name-values-11 expr-dnf)
+		]
+		(is (= (constant true) (collapse expr-00) ))
+		(is (= (constant true) (collapse expr-01) ))
+		(is (= (constant false) (collapse expr-10) ))
+		(is (= (constant true) (collapse expr-11) ))
+		))
 
